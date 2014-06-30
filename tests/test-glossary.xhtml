@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen SCHSchema="../epub-dict-10.sch"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"
+  xml:lang="en-US" lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <title>test glossary</title>
+  </head>
+  <body>
+
+    <!--=================================================-->
+    <!-- Glossary                                        -->
+    <!--=================================================-->
+    <!--VALID-->
+    <dl epub:type="glossary" title="glossary dl" class="valid">
+      <dt>term</dt>
+      <dd>def</dd>
+    </dl>
+    <dl epub:type="glossary" title="glossary dl with term in dfn" class="valid">
+      <dt>
+        <dfn>term</dfn>
+      </dt>
+      <dd>def</dd>
+    </dl>
+    <section epub:type="glossary" title="glossary section" class="valid">
+      <dfn epub:type="glossterm">term</dfn>
+      <span epub:type="glossdef">def</span>
+    </section>
+    <section epub:type="glossary" title="glossary aside" class="valid">
+      <dfn epub:type="glossterm">term</dfn>
+      <span epub:type="glossdef">def</span>
+    </section>
+    <section epub:type="glossary" title="glossary article" class="valid">
+      <dfn epub:type="glossterm">term</dfn>
+      <span epub:type="glossdef">def</span>
+    </section>
+    <!--INVALID-->
+    <div epub:type="glossary" title="glossary must be on body, dl or sectioning content"
+      class="invalid">
+      <dfn epub:type="glossterm">term</dfn>
+      <span epub:type="glossdef">def</span>
+    </div>
+
+
+  </body>
+</html>

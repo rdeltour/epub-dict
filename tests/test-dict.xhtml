@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen SCHSchema="../epub-dict-10.sch"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"
+  xml:lang="en-US" lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <title>test dictionary</title>
+  </head>
+  <body>
+    <!--=================================================-->
+    <!-- Dictionary Container                            -->
+    <!--=================================================-->
+    <!--VALID-->
+    <section epub:type="dictionary" title="dictionary on section" class="valid">
+      <h2>Test dictionary</h2>
+      <article>
+        <dfn>headword</dfn>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="dictionary with header section" class="valid">
+      <section epub:type="titlepage">
+        <h2 epub:type="title">A Dictionary of the English Language</h2>
+        <p>by Dr. Samuel Johnson</p>
+      </section>
+      <article>
+        <dfn>headword</dfn>
+      </article>
+    </section>
+    <!--INVALID: 'dictionary' must be on body or section-->
+    <aside epub:type="dictionary" title="dictionary on aside" class="invalid">
+      <article>
+        <dfn>headword</dfn>
+      </article>
+    </aside>
+    <div epub:type="dictionary" title="dictionary on div" class="invalid">
+      <article>
+        <dfn>headword</dfn>
+      </article>
+    </div>
+    <section epub:type="dictionary" title="dictionary with no article descendant" class="invalid">
+      <h2>Test dictionary</h2>
+    </section>
+
+
+    <!--=================================================-->
+    <!-- Dictionary Entry                                -->
+    <!--=================================================-->
+    <!--VALID-->
+    <section epub:type="dictionary" title="dictionary implied entry" class="valid">
+      <article>
+        <dfn>headword</dfn>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="dictionary explicit entry" class="valid">
+      <article epub:type="dictentry">
+        <dfn>headword</dfn>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="dictionary entry when dfn is not a direct child"
+      class="valid">
+      <article>
+        <div>
+          <dfn>headword</dfn>
+        </div>
+      </article>
+    </section>
+    <!--INVALID-->
+    <section epub:type="dictionary" title="dictionary entry on a div" class="invalid">
+      <div epub:type="dictentry">
+        <dfn>headword</dfn>
+      </div>
+    </section>
+    <section epub:type="dictionary" title="entry with no dfn descendant" class="invalid">
+      <article>headword</article>
+    </section>
+
+
+    <!--=================================================-->
+    <!-- Condensed Entry                                 -->
+    <!--=================================================-->
+    <!--VALID-->
+    <section epub:type="dictionary" title="condensed entry" class="valid">
+      <article>
+        <aside epub:type="condensed-entry" hidden="">
+          <dfn>headword</dfn>
+        </aside>
+        <dfn>headword</dfn>
+      </article>
+    </section>
+    <!--INVALID-->
+    <section epub:type="dictionary" title="condensed entry must be an aside element" class="invalid">
+      <article>
+        <div epub:type="condensed-entry" hidden="">
+          <dfn>headword</dfn>
+        </div>
+        <dfn>headword</dfn>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="condensed entry must be a direct child of the entry"
+      class="invalid">
+      <article>
+        <div>
+          <aside epub:type="condensed-entry">
+            <dfn>headword</dfn>
+          </aside>
+        </div>
+        <dfn>headword</dfn>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="condensed entry must be hidden" class="invalid">
+      <article>
+        <aside epub:type="condensed-entry">
+          <dfn>headword</dfn>
+        </aside>
+        <dfn>headword</dfn>
+      </article>
+    </section>
+    <section epub:type="dictionary"
+      title="condensed entry's hidden attribute's value must be 'hidden' or ''" class="invalid">
+      <article>
+        <aside epub:type="condensed-entry" hidden="true">
+          <dfn>headword</dfn>
+        </aside>
+        <dfn>headword</dfn>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="no dfn outside of the condensed entry" class="invalid">
+      <article>
+        <aside epub:type="condensed-entry" hidden="">
+          <dfn>headword</dfn>
+        </aside>
+      </article>
+    </section>
+
+
+    <!--=================================================-->
+    <!-- Part of Speech                                  -->
+    <!--=================================================-->
+    <!--VALID-->
+    <section epub:type="dictionary" title="part-of-speech list" class="valid">
+      <article>
+        <dfn>headword</dfn>
+        <ol epub:type="part-of-speech-list">
+          <li>
+            <span epub:type="part-of-speech">v</span>def </li>
+        </ol>
+      </article>
+    </section>
+    <section epub:type="dictionary"
+      title="part-of-speech not a direct child of part-of-speech-group" class="valid">
+      <article>
+        <dfn>headword</dfn>
+        <ol epub:type="part-of-speech-list">
+          <li>
+            <div><span epub:type="part-of-speech">v</span>def</div>
+          </li>
+        </ol>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="part-of-speech-group outside of list" class="valid">
+      <article>
+        <dfn>headword</dfn>
+        <div epub:type="part-of-speech-group">
+          <span epub:type="part-of-speech">v</span>def </div>
+      </article>
+    </section>
+    <!--INVALID-->
+    <section epub:type="dictionary" title="implied part-of-speech-group must have part-of-speech"
+      class="invalid">
+      <article>
+        <dfn>headword</dfn>
+        <ol epub:type="part-of-speech-list">
+          <li> def </li>
+        </ol>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="part-of-speech-group must have part-of-speech"
+      class="invalid">
+      <article>
+        <dfn>headword</dfn>
+        <div epub:type="part-of-speech-group"> def </div>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="part-of-speech list not on ol" class="invalid">
+      <article>
+        <dfn>headword</dfn>
+        <div epub:type="part-of-speech-list">
+          <li>
+            <span epub:type="part-of-speech">v</span>def </li>
+        </div>
+      </article>
+    </section>
+
+
+    <!--=================================================-->
+    <!-- Sense                                           -->
+    <!--=================================================-->
+    <!--VALID-->
+    <section epub:type="dictionary" title="sense list" class="valid">
+      <article>
+        <dfn>headword</dfn>
+        <ol epub:type="sense-list">
+          <li> def </li>
+        </ol>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="sense-group outside of list" class="valid">
+      <article>
+        <dfn>headword</dfn>
+        <div epub:type="sense-group"> def </div>
+      </article>
+    </section>
+    <!--INVALID-->
+    <section epub:type="dictionary" title="sense list not on ol" class="invalid">
+      <article>
+        <dfn>headword</dfn>
+        <div epub:type="sense-list"> def </div>
+      </article>
+    </section>
+
+    <!--=================================================-->
+    <!-- Translation                                     -->
+    <!--=================================================-->
+    <!--VALID-->
+    <section epub:type="dictionary" title="tran and tran-info" class="valid">
+      <article>
+        <dfn>headword</dfn>
+        <span epub:type="tran">word</span>
+        <span epub:type="tran-info">m fam</span>
+      </article>
+    </section>
+    <!--INVALID-->
+    <section epub:type="dictionary" title="tran-info must have a tran sibling" class="invalid">
+      <article>
+        <dfn>headword</dfn>
+        <span epub:type="tran-info">m fam</span>
+      </article>
+    </section>
+
+
+
+    <!--=================================================-->
+    <!-- Idiom                                           -->
+    <!--=================================================-->
+    <!--VALID-->
+    <section epub:type="dictionary" title="idiom" class="valid">
+      <article>
+        <dfn epub:type="idiom">idiom</dfn>
+      </article>
+    </section>
+    <!--INVALID-->
+    <section epub:type="dictionary" title="idiom must be on dfn" class="invalid">
+      <article>
+        <dfn epub:type="idiom">headword</dfn>
+        <span epub:type="idiom">idiom</span>
+      </article>
+    </section>
+
+    <!--=================================================-->
+    <!-- Phrase                                           -->
+    <!--=================================================-->
+    <!--VALID-->
+    <section epub:type="dictionary" title="phrase-list on ol" class="valid">
+      <article>
+        <dfn>headword</dfn>
+        <ol epub:type="phrase-list">
+          <li>
+            <dfn epub:type="idiom">idiom</dfn>
+          </li>
+        </ol>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="phrase-list on ul" class="valid">
+      <article>
+        <dfn>headword</dfn>
+        <ul epub:type="phrase-list">
+          <li>
+            <dfn epub:type="idiom">idiom</dfn>
+          </li>
+        </ul>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="phrase-list with example" class="valid">
+      <article>
+        <dfn>headword</dfn>
+        <ol epub:type="phrase-list">
+          <li>
+            <span epub:type="example">example</span>
+          </li>
+        </ol>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="standalone phrase-group" class="valid">
+      <article>
+        <dfn>headword</dfn>
+        <div epub:type="phrase-group">
+          <dfn epub:type="idiom">idiom</dfn>
+        </div>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="standalone phrase-group with idiom as descendant"
+      class="valid">
+      <article>
+        <dfn>headword</dfn>
+        <div epub:type="phrase-group">
+          <span>
+            <dfn epub:type="idiom">idiom</dfn>
+          </span>
+        </div>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="standalone phrase-group with example" class="valid">
+      <article>
+        <dfn>headword</dfn>
+        <div epub:type="phrase-group">
+          <span epub:type="example">idiom</span>
+        </div>
+      </article>
+    </section>
+    <!--INVALID-->
+    <section epub:type="dictionary" title="phrase-list not on ol or ul" class="invalid">
+      <article>
+        <dfn>headword</dfn>
+        <div epub:type="phrase-list">
+          <dfn epub:type="idiom">idiom</dfn>
+        </div>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="implied phrase-group with no idiom or example"
+      class="invalid">
+      <article>
+        <dfn>headword</dfn>
+        <ol epub:type="phrase-list">
+          <li> text </li>
+        </ol>
+      </article>
+    </section>
+    <section epub:type="dictionary" title="standalone phrase-group with no idiom or example"
+      class="invalid">
+      <article>
+        <dfn>headword</dfn>
+        <div epub:type="phrase-group">
+          <span>idiom</span>
+        </div>
+      </article>
+    </section>
+
+  </body>
+</html>
