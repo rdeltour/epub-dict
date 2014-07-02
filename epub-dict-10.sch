@@ -12,7 +12,7 @@
 
   <pattern id="dictionary-occurrence">
     <rule context="h:html">
-      <assert test="exists(.//h:*[tokenize(@epub:type,'/s+')='dictionary'])">At least one element of
+      <assert test="exists(.//h:*[tokenize(@epub:type,'\s+')='dictionary'])">At least one element of
         type 'dictionary' must be present</assert>
     </rule>
   </pattern>

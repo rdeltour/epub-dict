@@ -7,7 +7,7 @@
 
   <pattern id="glossary-occurrence">
     <rule context="h:html">
-      <assert test="exists(.//h:*[tokenize(@epub:type,'/s+')='glossary'])">At least one element of
+      <assert test="exists(.//h:*[tokenize(@epub:type,'\s+')='glossary'])">At least one element of
         type 'glossary' must be present</assert>
     </rule>
   </pattern>
