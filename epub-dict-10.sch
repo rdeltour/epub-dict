@@ -10,7 +10,7 @@
       - terms ancestor context (for future extensibility)
 	-->
 
-  <pattern id="dictionary-ocurrence">
+  <pattern id="dictionary-occurrence">
     <rule context="h:html">
       <assert test="exists(.//h:*[tokenize(@epub:type,'/s+')='dictionary'])">At least one element of
         type 'dictionary' must be present</assert>
@@ -19,7 +19,7 @@
 
   <pattern id="dictionary">
     <rule context="h:*[tokenize(@epub:type,'\s+')='dictionary']">
-      <assert test="self::h:body|self::h:section">The 'index' type is only allowed on 'body' or
+      <assert test="self::h:body|self::h:section">The 'dictionary' type is only allowed on 'body' or
         'section' elements.</assert>
       <assert test="exists(h:article)">A 'dictionary' must have at least one article child.</assert>
     </rule>
@@ -45,7 +45,7 @@
         'condensed-entry' type is only allowed on a child element of an 'article' dictionary
         entry.</assert>
       <assert test="exists(@hidden[lower-case(.)=('','hidden')])">A 'condensed-entry' must have a
-        'hidden' attribute with its value set to 'hidden' or the emptry string.</assert>
+        'hidden' attribute with its value set to 'hidden' or the empty string.</assert>
     </rule>
   </pattern>
 

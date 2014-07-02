@@ -5,7 +5,7 @@
   <ns uri="http://www.w3.org/1999/xhtml" prefix="h"/>
   <ns uri="http://www.idpf.org/2007/ops" prefix="epub"/>
 
-  <pattern id="glossary-ocurrence">
+  <pattern id="glossary-occurrence">
     <rule context="h:html">
       <assert test="exists(.//h:*[tokenize(@epub:type,'/s+')='glossary'])">At least one element of
         type 'glossary' must be present</assert>
